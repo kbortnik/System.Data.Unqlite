@@ -70,5 +70,15 @@ namespace System.Data.Unqlite
         {
             return new KeyValueCursor(dbProxy, false);
         }
+
+        public bool ExecuteJx9(string jx9, Action<string> action)
+        {
+            return dbProxy.ExecuteJx9(jx9, action);
+        }
+
+        public bool CompileJx9(string jx9)
+        {
+            return dbProxy.Compile(jx9);
+        }
     }
 }

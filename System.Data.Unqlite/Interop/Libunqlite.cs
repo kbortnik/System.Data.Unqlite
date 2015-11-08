@@ -65,6 +65,18 @@ namespace System.Data.Unqlite.Interop
         public delegate int Unqlite_open(out IntPtr ppDB, string zFilename, int iMode);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public delegate int Unqlite_compile(IntPtr ppDB, byte[] zJx9, int nByte, out IntPtr ppOut);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public delegate int Unqlite_vm_config(IntPtr pVm, int iOp, xConsumer callback, byte[] pUserData);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public delegate int Unqlite_vm_exec(IntPtr pVm);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public delegate int Unqlite_vm_release(IntPtr pVm);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public delegate int xConsumer(IntPtr dataPointer, ulong iDataLen, byte[] pUserData);
 
         public const string LibraryName = "unqlite";
@@ -90,6 +102,10 @@ namespace System.Data.Unqlite.Interop
         public static Unqlite_kv_cursor_data_callback unqlite_kv_cursor_data_callback;
         public static Unqlite_kv_cursor_seek unqlite_kv_cursor_seek;
         public static Unqlite_kv_cursor_delete_entry unqlite_kv_cursor_delete_entry;
+        public static Unqlite_compile unqlite_compile;
+        public static Unqlite_vm_config unqlite_vm_config;
+        public static Unqlite_vm_exec unqlite_vm_exec;
+        public static Unqlite_vm_release unqlite_vm_release;
 
         static Libunqlite()
         {
@@ -121,6 +137,12 @@ namespace System.Data.Unqlite.Interop
             unqlite_kv_cursor_seek = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_seek>("unqlite_kv_cursor_seek");
 
             unqlite_kv_cursor_delete_entry = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_delete_entry>("unqlite_kv_cursor_delete_entry");
+
+            unqlite_compile = NativeLib.GetUnmanagedFunction<Unqlite_compile>("unqlite_compile");
+            unqlite_vm_config = NativeLib.GetUnmanagedFunction<Unqlite_vm_config>("unqlite_vm_config");
+            unqlite_vm_exec = NativeLib.GetUnmanagedFunction<Unqlite_vm_exec>("unqlite_vm_exec");
+            unqlite_vm_release = NativeLib.GetUnmanagedFunction<Unqlite_vm_release>("unqlite_vm_release");
+            
         }
     }
 }

@@ -94,6 +94,43 @@ namespace System.Data.Unqlite.Interop
             return null;
         }
 
+        internal bool Compile(string jx9)
+        {
+            var handler = IntPtr.Zero;
+            var jx9bytes = Encoding.UTF8.GetBytes(jx9);
+            var res = Libunqlite.unqlite_compile(DBHandle, jx9bytes, jx9bytes.Length, out handler);
+
+            return res == 0;
+        }
+
+        internal bool ExecuteJx9(string jx9, Action<string> action)
+        {
+            int res;
+
+            var handler = IntPtr.Zero;
+            var jx9bytes = Encoding.UTF8.GetBytes(jx9);
+            res = Libunqlite.unqlite_compile(DBHandle, jx9bytes, jx9bytes.Length, out handler);
+            if (res != 0) return false;
+
+            res = Libunqlite.unqlite_vm_config(handler, (int) UNQLITE_VM_CONFIG.UNQLITE_VM_CONFIG_OUTPUT,
+                (pointer, len, data) =>
+                {
+                    var value = Marshal.PtrToStringAnsi(pointer, (int)len);
+                    action(value);
+                    return 0;
+                }, null);
+
+            if (res != 0) return false;
+
+            res = Libunqlite.unqlite_vm_exec(handler);
+
+            if (res != 0) return false;
+
+            Libunqlite.unqlite_vm_release(handler);
+
+            return res == 0;
+        }
+
         internal void Close()
         {
             Libunqlite.unqlite_close(DBHandle);

@@ -87,6 +87,7 @@
     <Compile Include="UnqliteDB.cs" />
     <Compile Include="Unqlite_Cursor.cs" />
     <Compile Include="Unqlite_Open.cs" />
+    <Compile Include="UNQLITE_VM_CONFIG.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interop\Platform.Windows.cs" />
