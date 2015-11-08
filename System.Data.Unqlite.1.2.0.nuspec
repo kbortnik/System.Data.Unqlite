@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+    <metadata>
+        <id>System.Data.Unqlite</id>
+        <version>1.2.0</version>
+        <title>System.Data.Unqlite</title>
+        <authors>kbortnik</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A wrapper to use the UnQLite library in C# (or any CLR compatible language).</description>
+        <references>
+            <group targetFramework=".NETFramework4.0">
+                <reference file="unqlite32.dll" />
+                <reference file="unqlite64.dll" />
+            </group>
+        </references>
+    </metadata>
+    <files />
+</package>
