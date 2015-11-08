@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("System.Data.Unqlite.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("System.Data.Unqlite contributors")]
 [assembly: AssemblyProduct("System.Data.Unqlite.Tests")]
 [assembly: AssemblyCopyright("Copyright © 2013")]
 [assembly: AssemblyTrademark("")]
