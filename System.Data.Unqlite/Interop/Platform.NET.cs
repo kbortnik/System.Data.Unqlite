@@ -1,4 +1,5 @@
-﻿#if !MONO
+﻿
+#if !MONO
 
 namespace System.Data.Unqlite.Interop
 {

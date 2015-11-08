@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Data.Unqlite.Interop;
 using System.Text;
 
 namespace System.Data.Unqlite
 {
     public class KeyValueCursor : IDisposable
     {
-        private Interop.UnqliteDBProxy dbProxy;
         private IntPtr cursor;
-        public bool Open { get; set; }
-        internal KeyValueCursor(Interop.UnqliteDBProxy dbProxy, bool forwardCursor)
+        private readonly UnqliteDBProxy dbProxy;
+
+        internal KeyValueCursor(UnqliteDBProxy dbProxy, bool forwardCursor)
         {
             this.dbProxy = dbProxy;
-            bool success = dbProxy.InitKVCursor(out cursor);
+            var success = dbProxy.InitKVCursor(out cursor);
             if (success)
             {
                 if (forwardCursor)
@@ -31,6 +29,8 @@ namespace System.Data.Unqlite
                 Open = false;
             }
         }
+
+        public bool Open { get; set; }
 
         public void Dispose()
         {
@@ -56,7 +56,7 @@ namespace System.Data.Unqlite
 
         public string GetKey()
         {
-            byte[] keyData = dbProxy.KV_GetCurrentKey(cursor);
+            var keyData = dbProxy.KV_GetCurrentKey(cursor);
             return Encoding.ASCII.GetString(keyData);
         }
 
@@ -67,7 +67,7 @@ namespace System.Data.Unqlite
 
         public string GetValue()
         {
-            byte[] valueData = dbProxy.KV_GetCurrentValue(cursor);
+            var valueData = dbProxy.KV_GetCurrentValue(cursor);
             return Encoding.ASCII.GetString(valueData);
         }
 
@@ -101,7 +101,6 @@ namespace System.Data.Unqlite
         {
             dbProxy.SeekKey(cursor, key, Unqlite_Cursor_Seek.Match_Exact);
         }
-
 
 
         public void Seek(string key, Unqlite_Cursor_Seek seekMode)

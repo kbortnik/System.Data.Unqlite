@@ -1,11 +1,13 @@
 ﻿using System.Security.Permissions;
 using Microsoft.Win32.SafeHandles;
+
 /// take from clr zmq
+
 namespace System.Data.Unqlite.Interop
 {
-    
     /// <summary>
-    /// Safe handle for unmanaged libraries. See http://msdn.microsoft.com/msdnmag/issues/05/10/Reliability/ for more about safe handles.
+    ///     Safe handle for unmanaged libraries. See http://msdn.microsoft.com/msdnmag/issues/05/10/Reliability/ for more about
+    ///     safe handles.
     /// </summary>
     [SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode = true)]
     internal sealed class SafeLibraryHandle : SafeHandleZeroOrMinusOneIsInvalid

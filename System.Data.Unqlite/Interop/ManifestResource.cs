@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 
 // taken from clr zmq
+
 namespace System.Data.Unqlite.Interop
 {
     internal static class ManifestResource
@@ -17,7 +17,7 @@ namespace System.Data.Unqlite.Interop
                 return true;
             }
 
-            Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
+            var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
 
             if (resourceStream == null)
             {
@@ -29,7 +29,7 @@ namespace System.Data.Unqlite.Interop
 
             try
             {
-                using (FileStream fileStream = File.Create(outputPath))
+                using (var fileStream = File.Create(outputPath))
                 {
                     resourceStream.CopyTo(fileStream);
                 }

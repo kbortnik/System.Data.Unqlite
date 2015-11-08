@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Unqlite.Interop;
-using System.Linq;
-using System.Text;
+﻿using System.Data.Unqlite.Interop;
 
 namespace System.Data.Unqlite
 {
@@ -44,6 +40,7 @@ namespace System.Data.Unqlite
         {
             return dbProxy.GetKeyValue(Key);
         }
+
         public byte[] GetKeyBinaryValue(string Key)
         {
             return dbProxy.GetKeyBinaryValue(Key);
@@ -66,13 +63,12 @@ namespace System.Data.Unqlite
 
         public KeyValueCursor CreateKeyValueCursor()
         {
-            return new KeyValueCursor(dbProxy,true);
+            return new KeyValueCursor(dbProxy, true);
         }
 
         public KeyValueCursor CreateReverseKeyValueCursor()
         {
-            return new KeyValueCursor(dbProxy,false);
+            return new KeyValueCursor(dbProxy, false);
         }
-
     }
 }

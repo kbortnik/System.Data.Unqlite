@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
+
 // taken from clr zmq
+
 namespace System.Data.Unqlite.Interop
 {
     internal class Tracer

@@ -1,9 +1,9 @@
 ﻿#if !UNIX
-using System;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 
 // take from clr zmq
+
 namespace System.Data.Unqlite.Interop
 {
     internal static partial class Platform
@@ -44,4 +44,5 @@ namespace System.Data.Unqlite.Interop
         private static extern IntPtr GetProcAddress(SafeLibraryHandle moduleHandle, string procname);
     }
 }
+
 #endif
