@@ -1,9 +1,11 @@
 System.Data.Unqlite
 ===================
 
+[![Build status](https://ci.appveyor.com/api/projects/status/5ooif300du228558?svg=true)](https://ci.appveyor.com/project/kbortnik/system-data-unqlite)
+
 A wrapper to use Unqlite library in C# (or any CLR compatible language).
 
-About UnQLite.
+### About UnQLite
 
 UnQLite is a in-process software library which implements a self-contained, serverless, zero-configuration, transactional NoSQL database engine. UnQLite is a document store database similar to MongoDB, Redis, CouchDB etc. as well a standard Key/Value store similar to BerkeleyDB, LevelDB, etc.
 
