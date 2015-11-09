@@ -9,6 +9,9 @@
         <description>A wrapper to use the UnQLite library in C# (or any CLR compatible language).</description>
     </metadata>
     <files>
+        <file src="build\System.Data.Unqlite.targets" target="build\System.Data.Unqlite.targets" />
+        <file src="unqlite32.dll" target="build\unqlite32.dll" />
+        <file src="unqlite64.dll" target="build\unqlite64.dll" />
         <file src="bin\Release\System.Data.Unqlite.dll" target="lib\net40\System.Data.Unqlite.dll" />
     </files>
 </package>
