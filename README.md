@@ -1,7 +1,7 @@
 System.Data.Unqlite
 ===================
 
-[![Build status](https://ci.appveyor.com/api/projects/status/5ooif300du228558?svg=true)](https://ci.appveyor.com/project/kbortnik/system-data-unqlite)
+[![Build status](https://ci.appveyor.com/api/projects/status/5ooif300du228558?svg=true)](https://ci.appveyor.com/project/kbortnik/system-data-unqlite) [![Coverage Status](https://coveralls.io/repos/kbortnik/System.Data.Unqlite/badge.svg?branch=master&service=github)](https://coveralls.io/github/kbortnik/System.Data.Unqlite?branch=master)
 
 A wrapper to use Unqlite library in C# (or any CLR compatible language).
 
