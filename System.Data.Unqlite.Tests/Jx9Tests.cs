@@ -1,15 +1,28 @@
 ﻿using System.IO;
+using System.Reflection;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace System.Data.Unqlite.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class Jx9Tests
     {
         private const string databaseName = ":mem:";
 
-        [TestMethod]
+        [TearDown]
+        public void Test_DeleteDB()
+        {
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            var dbFilePath = Path.Combine(dir, databaseName);
+            if (File.Exists(dbFilePath))
+            {
+                File.Delete(dbFilePath);
+            }
+        }
+
+        [Test]
         public void Test_Jx9_Compile()
         {
             var db = UnqliteDB.Create();
@@ -22,7 +35,7 @@ namespace System.Data.Unqlite.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Test_Store()
         {
             var db = UnqliteDB.Create();
@@ -44,7 +57,7 @@ namespace System.Data.Unqlite.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Test_Store_and_Fetch_All()
         {
             var db = UnqliteDB.Create();

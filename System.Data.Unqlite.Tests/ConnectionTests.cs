@@ -1,20 +1,20 @@
 ﻿using System.IO;
 using System.Reflection;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace System.Data.Unqlite.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ConnectionTests
     {
         private const string databaseName = ":mem:";
 
-        [TestCleanup]
+        [TearDown]
         public void Test_DeleteDB()
         {
-            var dir = Path.GetDirectoryName(
-                Assembly.GetExecutingAssembly().Location);
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
             var dbFilePath = Path.Combine(dir, databaseName);
             if (File.Exists(dbFilePath))
             {
@@ -22,7 +22,7 @@ namespace System.Data.Unqlite.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Test_connection_Open_Create()
         {
             var db = UnqliteDB.Create();
@@ -34,7 +34,7 @@ namespace System.Data.Unqlite.Tests
             Assert.IsTrue(res);
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_Store()
         {
             var db = UnqliteDB.Create();
@@ -48,7 +48,7 @@ namespace System.Data.Unqlite.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_Store_With_Callback()
         {
             var db = UnqliteDB.Create();
@@ -61,7 +61,7 @@ namespace System.Data.Unqlite.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_BinaryStore_With_Callback()
         {
             var db = UnqliteDB.Create();
@@ -78,7 +78,7 @@ namespace System.Data.Unqlite.Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_Cursor()
         {
             var db = UnqliteDB.Create();
@@ -103,7 +103,7 @@ namespace System.Data.Unqlite.Tests
             db.Close();
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_Cursor_with_callback()
         {
             var db = UnqliteDB.Create();
@@ -124,7 +124,7 @@ namespace System.Data.Unqlite.Tests
             db.Close();
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_Cursor_Seek()
         {
             var db = UnqliteDB.Create();
@@ -145,7 +145,7 @@ namespace System.Data.Unqlite.Tests
             db.Close();
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_Cursor_SeekModeGE()
         {
             var db = UnqliteDB.Create();
@@ -166,7 +166,7 @@ namespace System.Data.Unqlite.Tests
             db.Close();
         }
 
-        [TestMethod]
+        [Test]
         public void Test_KeyValue_Cursor_Seek_Delete()
         {
             var db = UnqliteDB.Create();
