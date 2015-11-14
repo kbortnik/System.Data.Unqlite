@@ -79,6 +79,9 @@ namespace System.Data.Unqlite.Interop
         [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public delegate int xConsumer(IntPtr dataPointer, ulong iDataLen, byte[] pUserData);
 
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public delegate int Unqlite_commit(IntPtr ppDB);
+
         public const string LibraryName = "unqlite";
 
         private static readonly UnmanagedLibrary NativeLib;
@@ -106,6 +109,7 @@ namespace System.Data.Unqlite.Interop
         public static Unqlite_vm_config unqlite_vm_config;
         public static Unqlite_vm_exec unqlite_vm_exec;
         public static Unqlite_vm_release unqlite_vm_release;
+        public static Unqlite_commit unqlite_commit;
 
         static Libunqlite()
         {
@@ -142,7 +146,8 @@ namespace System.Data.Unqlite.Interop
             unqlite_vm_config = NativeLib.GetUnmanagedFunction<Unqlite_vm_config>("unqlite_vm_config");
             unqlite_vm_exec = NativeLib.GetUnmanagedFunction<Unqlite_vm_exec>("unqlite_vm_exec");
             unqlite_vm_release = NativeLib.GetUnmanagedFunction<Unqlite_vm_release>("unqlite_vm_release");
-            
+
+            unqlite_commit = NativeLib.GetUnmanagedFunction<Unqlite_commit>("unqlite_commit");
         }
     }
 }

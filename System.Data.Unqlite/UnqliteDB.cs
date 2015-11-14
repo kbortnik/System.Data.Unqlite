@@ -80,5 +80,14 @@ namespace System.Data.Unqlite
         {
             return dbProxy.Compile(jx9);
         }
+
+        /// <summary>
+        /// Commit all changes to the database and release the exclusive lock.
+        /// </summary>
+        /// <returns></returns>
+        public bool Commit()
+        {
+            return dbProxy.Commit();
+        }
     }
 }

@@ -301,5 +301,11 @@ namespace System.Data.Unqlite.Interop
             var res = Libunqlite.unqlite_kv_cursor_delete_entry(cursor);
             return res == 0;
         }
+
+        public bool Commit()
+        {
+            var res = Libunqlite.unqlite_commit(DBHandle);
+            return res == 0;
+        }
     }
 }

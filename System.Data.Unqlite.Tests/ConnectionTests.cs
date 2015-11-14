@@ -49,6 +49,21 @@ namespace System.Data.Unqlite.Tests
         }
 
         [Test]
+        public void Test_KeyValue_Store_With_Commit()
+        {
+            var db = UnqliteDB.Create();
+            var res = db.Open(databaseName, Unqlite_Open.CREATE);
+            if (res)
+            {
+                var res1 = db.SaveKeyValue("test", "hello world");
+                var commit = db.Commit();
+                Assert.IsTrue(commit);
+
+                db.Close();
+            }
+        }
+
+        [Test]
         public void Test_KeyValue_Store_With_Callback()
         {
             var db = UnqliteDB.Create();
